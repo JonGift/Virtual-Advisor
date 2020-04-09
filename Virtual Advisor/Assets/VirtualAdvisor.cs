@@ -7,16 +7,20 @@ public class VirtualAdvisor : MonoBehaviour
 {
     // UI Elements
     public Dropdown majorDropdown;
+    public InputField desiredCreditsInput;
 
     // Virtual Advisor info
     int page = 0;
+    int maxPage = 0;
+
     string major = "None";
+    int desiredCredits = 12;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        FindMaxPage();
     }
 
     // Update is called once per frame
@@ -25,12 +29,25 @@ public class VirtualAdvisor : MonoBehaviour
         
     }
 
+    void FindMaxPage() {
+        string pageFinder = "Page" + maxPage;
+        while (transform.GetChild(0).FindChild(pageFinder) != null) {
+            maxPage++;
+            pageFinder = "Page" + maxPage;
+        }
+        maxPage--;
+    }
+
     public void IncrementPage() {
+        if (page == maxPage)
+            return;
         page++;
         UpdatePage(page - 1);
     }
 
     public void DecrementPage() {
+        if (page == 0)
+            return;
         page--;
         UpdatePage(page + 1);
     }
@@ -48,5 +65,17 @@ public class VirtualAdvisor : MonoBehaviour
         string m = majorDropdown.options[majorDropdown.value].text;
         major = m;
         Debug.Log("Changed major: " + major);
+    }
+
+    public void UpdateCredits() {
+        int credits = int.Parse(desiredCreditsInput.text);
+        if (credits > 0 && credits <= 20) {
+            desiredCredits = credits;
+            Debug.Log("New number of credits: " + desiredCredits);
+        }
+        else {
+            desiredCreditsInput.text = desiredCredits.ToString();
+            Debug.Log("Invalid number of credits entered.");
+        }
     }
 }
