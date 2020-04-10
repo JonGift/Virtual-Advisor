@@ -31,7 +31,7 @@ public class VirtualAdvisor : MonoBehaviour
 
     void FindMaxPage() {
         string pageFinder = "Page" + maxPage;
-        while (transform.GetChild(0).FindChild(pageFinder) != null) {
+        while (transform.GetChild(0).Find(pageFinder) != null) {
             maxPage++;
             pageFinder = "Page" + maxPage;
         }
@@ -56,8 +56,8 @@ public class VirtualAdvisor : MonoBehaviour
         string prevPage = "Page" + prev;
         string pageName = "Page" + page;
 
-        transform.GetChild(0).FindChild(prevPage).gameObject.SetActive(false);
-        transform.GetChild(0).FindChild(pageName).gameObject.SetActive(true);
+        transform.GetChild(0).Find(prevPage).gameObject.SetActive(false);
+        transform.GetChild(0).Find(pageName).gameObject.SetActive(true);
     }
 
 
