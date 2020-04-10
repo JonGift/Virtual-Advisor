@@ -29,6 +29,13 @@ public class VirtualAdvisor : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// This function will give our GUIController class all of this student's information, how it will be stored is to be decided.
+    /// </summary>
+    void OutputStudentInfo() {
+
+    }
+
     void FindMaxPage() {
         string pageFinder = "Page" + maxPage;
         while (transform.GetChild(0).Find(pageFinder) != null) {
