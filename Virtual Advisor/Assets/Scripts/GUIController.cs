@@ -32,12 +32,10 @@ public class GUIController : MonoBehaviour
     }
 
     //This function im trying to create a table for the Computer science courses
-    //I may need to do this inside of start
+    //Some things to consider is the CRN( Course Registration Number), semster, prereqs, campus, time ...etc
     string CreateCompSciDB()
     {
-        //IDbCommand dbcmd2;  //Im not sure what this is but its like a variable definition of a database command?
 
-        //dbcmd2 = dbcon.CreateCommand(); //create the command 
         string compSci_createTable =
             "CREATE TABLE IF NOT EXISTS " + "compSci_table" + " (" +
             "CRN" + "INTERGER PRIMARY KEY," +
@@ -45,10 +43,22 @@ public class GUIController : MonoBehaviour
             "Prerequisites" + "TEXT NOT NULL, " +
             "Campus" + "TEXT NOT NULL )";
 
-        //dbcmd2.CommandText = compSci_createTable;  //actually create the table??
-        //big chungus
         return compSci_createTable;
 
+    }
+
+
+    //Create Computer Engineer DB
+    string CreateCompEngrDB()
+    {
+        string compEngr_createTable =
+            "CREATE TABLE IF NOT EXISTS " + "compSci_table" + " (" +
+            "CRN" + "INTERGER PRIMARY KEY," +
+            "Semester" + "TEXT NOT NULL, " +
+            "Prerequisites" + "TEXT NOT NULL, " +
+            "Campus" + "TEXT NOT NULL )";
+
+        return compEngr_createTable;
     }
 
     /// <summary>

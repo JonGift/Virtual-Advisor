@@ -8,6 +8,7 @@ public class VirtualAdvisor : MonoBehaviour
     // UI Elements
     public Dropdown majorDropdown;
     public InputField desiredCreditsInput;
+    public Dropdown electiveDropdown;   //new
 
     // Virtual Advisor info
     int page = 0;
@@ -15,6 +16,7 @@ public class VirtualAdvisor : MonoBehaviour
 
     string major = "None";
     int desiredCredits = 12;
+    string electives = "None";
 
 
     // Start is called before the first frame update
@@ -85,4 +87,13 @@ public class VirtualAdvisor : MonoBehaviour
             Debug.Log("Invalid number of credits entered.");
         }
     }
+    public void UpdateElectives()
+    {
+        string e = electiveDropdown.options[electiveDropdown.value].text;
+        //add the string to a list to be able to store all electives they choose.
+        //Also if selected once delete 
+        electives = e;
+        Debug.Log("User selected electives " + electives);
+    }
+  
 }
