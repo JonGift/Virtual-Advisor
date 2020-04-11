@@ -8,7 +8,7 @@ public class VirtualAdvisor : MonoBehaviour
     // UI Elements
     public Dropdown majorDropdown;
     public InputField desiredCreditsInput;
-    public Dropdown electiveDropdown;   //new
+    public Dropdown electiveDropdown;   //Get the drop down button on page 2
 
     // Virtual Advisor info
     int page = 0;
@@ -16,7 +16,11 @@ public class VirtualAdvisor : MonoBehaviour
 
     string major = "None";
     int desiredCredits = 12;
-    string electives = "None";
+    Text myText;   //use to output users elective choices
+
+    public List<string> electives = new List<string>();   //Use to store more than one elective choice  
+
+
 
 
     // Start is called before the first frame update
@@ -87,13 +91,40 @@ public class VirtualAdvisor : MonoBehaviour
             Debug.Log("Invalid number of credits entered.");
         }
     }
+
+    //Update the users electives that they have selected
     public void UpdateElectives()
     {
-        string e = electiveDropdown.options[electiveDropdown.value].text;
-        //add the string to a list to be able to store all electives they choose.
-        //Also if selected once delete 
-        electives = e;
-        Debug.Log("User selected electives " + electives);
+
+        //We need to set a maximum number of electives the user can choose
+        int maxElect = 3;
+        string overallElectives = string.Empty;   //string used to store all elective choices to later print out
+
+        myText = GameObject.Find("OutputText").GetComponent<Text>();
+
+        string e1 = electiveDropdown.options[electiveDropdown.value].text;
+        electives.Add(e1);           //Add electives to the list  
+
+        overallElectives = string.Join(" ", electives);
+
+        myText.text = overallElectives;
+
+        for ( int x =0; x < electiveDropdown.options.Count; x++)
+        {
+            if(electiveDropdown.options[x].text == e1)
+            {
+                electiveDropdown.options.RemoveAt(x);   //If selected remove from list 
+                break;
+            }
+        }
+        
+       
+        /*foreach (string elective in electives)
+        {
+            Debug.Log(elective);   //print out to make sure its working 
+        }
+        */
+
     }
   
 }
