@@ -7,15 +7,19 @@ public class VirtualAdvisor : MonoBehaviour
 {
     // UI Elements
     public Dropdown majorDropdown;
+    public Dropdown semesterDropdown;
     public InputField desiredCreditsInput;
     public Dropdown electiveDropdown;   //Get the drop down button on page 2
-
     // Virtual Advisor info
     int page = 0;
     int maxPage = 0;
 
     string major = "None";
+    string semester = "None";
     int desiredCredits = 12;
+
+
+
     Text myText;   //use to output users elective choices
 
     public List<string> electives = new List<string>();   //Use to store more than one elective choice  
@@ -80,6 +84,13 @@ public class VirtualAdvisor : MonoBehaviour
         Debug.Log("Changed major: " + major);
     }
 
+    public void UpdateSemester()
+    {
+        string s = semesterDropdown.options[semesterDropdown.value].text;
+        semester = s;
+        Debug.Log("Updated Semester: " + semester);
+    }
+
     public void UpdateCredits() {
         int credits = int.Parse(desiredCreditsInput.text);
         if (credits > 0 && credits <= 20) {
@@ -117,13 +128,10 @@ public class VirtualAdvisor : MonoBehaviour
                 break;
             }
         }
-        
-       
-        /*foreach (string elective in electives)
+        foreach (string elective in electives)
         {
             Debug.Log(elective);   //print out to make sure its working 
         }
-        */
 
     }
   
