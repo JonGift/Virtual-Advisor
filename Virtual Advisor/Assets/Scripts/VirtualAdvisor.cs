@@ -145,15 +145,17 @@ public class VirtualAdvisor : MonoBehaviour
     }
 
     public void UpdateTakenClasses() {
+        string query = "DELETE FROM BigChungusTaken";
+        dbcontroller.runQuery(query);
         foreach(CheckboxController checkbox in takenClassesObj.GetComponentsInChildren<CheckboxController>()) {
             if (checkbox.GetCheck()) {
                 string subject = checkbox.GetSubject();
                 int course = checkbox.GetCourse();
                 // At this point we have the subject and the course. We can now insert into the taken courses table with these two values.
 
-                string query =
+                query =
                 "INSERT INTO BigChungusTaken VALUES " +
-                "(" + subject + ", " +
+                "('" + subject + "', " +
                 course + ")";
 
                 dbcontroller.runQuery(query);

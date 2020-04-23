@@ -57,8 +57,8 @@ public class GUIController : MonoBehaviour
     {
         string takenTable_CreateTable =
             "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
-            "Subject" + " TEXT NOR NULL," +
-            "Number" + " INTEGER)";
+            "Subject" + " TEXT NOT NULL," +
+            "Course" + " INTEGER)";
 
         return takenTable_CreateTable;
 
