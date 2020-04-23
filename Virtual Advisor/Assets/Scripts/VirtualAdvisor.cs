@@ -11,6 +11,7 @@ public class VirtualAdvisor : MonoBehaviour
     public Dropdown semesterDropdown;
     public InputField desiredCreditsInput;
     public Dropdown electiveDropdown;   //Get the drop down button on page 2
+    public GameObject takenClassesObj;
     // Virtual Advisor info
     int page = 0;
     int maxPage = 0;
@@ -78,6 +79,11 @@ public class VirtualAdvisor : MonoBehaviour
 
         transform.GetChild(0).Find(prevPage).gameObject.SetActive(false);
         transform.GetChild(0).Find(pageName).gameObject.SetActive(true);
+
+        // Page specific calls below:
+        if(prev == 5) {
+            UpdateTakenClasses();
+        }
     }
 
 
@@ -123,7 +129,7 @@ public class VirtualAdvisor : MonoBehaviour
 
         myText.text = overallElectives;
 
-        for ( int x =0; x < electiveDropdown.options.Count; x++)
+        for ( int x = 0; x < electiveDropdown.options.Count; x++)
         {
             if(electiveDropdown.options[x].text == e1)
             {
@@ -136,6 +142,20 @@ public class VirtualAdvisor : MonoBehaviour
             Debug.Log(elective);   //print out to make sure its working 
         }
 
+    }
+
+    public void UpdateTakenClasses() {
+        foreach(CheckboxController checkbox in takenClassesObj.GetComponentsInChildren<CheckboxController>()) {
+            if (checkbox.GetCheck()) {
+                string subject = checkbox.GetSubject();
+                int course = checkbox.GetCourse();
+                // At this point we have the subject and the course. We can now insert into the taken courses table with these two values.
+
+                string query = "what the fuck goes here";
+
+                // dbcontroller.runQuery(query); Uncomment me
+            }
+        }
     }
   
 }
