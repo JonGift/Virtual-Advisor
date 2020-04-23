@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class VirtualAdvisor : MonoBehaviour
 {
     // UI Elements
+    public InputField adminInput;
     public Dropdown majorDropdown;
     public Dropdown semesterDropdown;
     public InputField desiredCreditsInput;
@@ -18,18 +19,16 @@ public class VirtualAdvisor : MonoBehaviour
     string semester = "None";
     int desiredCredits = 12;
 
-
+    GUIController dbcontroller;
 
     Text myText;   //use to output users elective choices
 
     public List<string> electives = new List<string>();   //Use to store more than one elective choice  
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
+        dbcontroller = GetComponent<GUIController>();
         FindMaxPage();
     }
 
@@ -67,6 +66,10 @@ public class VirtualAdvisor : MonoBehaviour
             return;
         page--;
         UpdatePage(page + 1);
+    }
+
+    public void ExecuteQueryFromAdmin() {
+        dbcontroller.runQuery(adminInput.text);
     }
 
     void UpdatePage(int prev) {
