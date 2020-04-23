@@ -28,7 +28,10 @@ public class GUIController : MonoBehaviour
 
         string q_createTable = CreateCompSciDB2("jonCompSci");
 
+        string taken_createTable = createTakenTable("BigChungusTaken");
+
         dbcmd.CommandText = q_createTable;
+        dbcmd.CommandText = taken_createTable;  //create taken table
 
         reader = dbcmd.ExecuteReader();
     }
@@ -50,19 +53,14 @@ public class GUIController : MonoBehaviour
         return true;
     }
 
-    //This function im trying to create a table for the Computer science courses
-    //Some things to consider is the CRN( Course Registration Number), semster, prereqs, campus, time ...etc
-    string CreateCompSciDB()
+    string createTakenTable(string tableName)
     {
+        string takenTable_CreateTable =
+            "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
+            "Subject" + " TEXT NOR NULL," +
+            "Number" + " INTEGER)";
 
-        string compSci_createTable =
-            "CREATE TABLE IF NOT EXISTS " + "compSci_table" + " (" +
-            "CRN" + "INTERGER PRIMARY KEY," +
-            "Semester" + "TEXT NOT NULL, " +
-            "Prerequisites" + "TEXT NOT NULL, " +
-            "Campus" + "TEXT NOT NULL )";
-
-        return compSci_createTable;
+        return takenTable_CreateTable;
 
     }
 

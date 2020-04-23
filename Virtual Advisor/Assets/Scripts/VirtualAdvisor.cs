@@ -151,10 +151,14 @@ public class VirtualAdvisor : MonoBehaviour
                 int course = checkbox.GetCourse();
                 // At this point we have the subject and the course. We can now insert into the taken courses table with these two values.
 
-                string query = "what the fuck goes here";
+                string query =
+                "INSERT INTO BigChungusTaken VALUES " +
+                "(" + subject + ", " +
+                course + ")";
 
-                // dbcontroller.runQuery(query); Uncomment me
+                dbcontroller.runQuery(query);
             }
+            //need to reset table at this point
         }
     }
   
