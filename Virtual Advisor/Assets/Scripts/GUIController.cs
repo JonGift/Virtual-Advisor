@@ -46,6 +46,7 @@ public class GUIController : MonoBehaviour
         dbcmd = dbcon.CreateCommand();
         dbcmd.CommandText = query;
         reader = dbcmd.ExecuteReader();
+        Debug.Log("Records affected: " + reader.RecordsAffected);
         return true;
     }
 
