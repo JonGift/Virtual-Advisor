@@ -26,19 +26,15 @@ public class GUIController : MonoBehaviour
 
         dbcmd = dbcon.CreateCommand();
 
-        string Compsci_createTable = CreateCompSciDB2("jonCompSci");
+        RunQuery(CreateCompSciDB2("CompSciClasses"));
+        RunQuery(CreateTakenTable("TakenClasses"));
+        RunQuery(CreateElectiveTable("ElectiveClasses"));
+        RunQuery(CreateGeneratedClassTable("GeneratedClasses"));
+    }
 
-        string taken_createTable = createTakenTable("BigChungusTaken");
-
-        string elective_createTable = createElectiveTable("Electives");
-
-
-
-        dbcmd.CommandText = Compsci_createTable;
-        dbcmd.CommandText = taken_createTable;  //create taken table
-        dbcmd.CommandText = elective_createTable;   //create elective table
-
-        reader = dbcmd.ExecuteReader();
+    void OnApplicationQuit() {
+        dbcon.Close();
+        Debug.Log("Application ending after " + Time.time + " seconds");
     }
 
     public void Update() {
@@ -49,7 +45,7 @@ public class GUIController : MonoBehaviour
         }
     }
 
-    public bool runQuery(string query) {
+    public bool RunQuery(string query) {
         Debug.Log("Received query: " + query);
         dbcmd = dbcon.CreateCommand();
         dbcmd.CommandText = query;
@@ -58,8 +54,7 @@ public class GUIController : MonoBehaviour
         return true;
     }
 
-    //This function is used to create a table containing the already taken courses
-    string createTakenTable(string tableName)
+    string CreateTakenTable(string tableName)
     {
         string takenTable_CreateTable =
             "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
@@ -68,6 +63,21 @@ public class GUIController : MonoBehaviour
 
         return takenTable_CreateTable;
 
+    }
+
+    string CreateGeneratedClassTable(string tableName) {
+        string GeneratedClassCreateTable =
+            "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
+            "CRN" + " INTEGER PRIMARY KEY," +
+            "Subject" + " TEXT NOT NULL," +
+            "Course" + " INTEGER," +
+            "Section" + " INTEGER," +
+            "Credits" + " INTEGER," +
+            "Title" + " TEXT," +
+            "PrereqSubject" + " TEXT," +
+            "PrereqCourse" + " INTEGER)";
+
+        return GeneratedClassCreateTable;
     }
 
     // This is Jon's suggestion for the CS table. Each table should be unique to the semester, and should be pulled from the web page.
@@ -86,7 +96,6 @@ public class GUIController : MonoBehaviour
         return compSci_createTable;
     }
 
-    //Create Computer Engineer table
     string CreateCompEngrDB()
     {
         string compEngr_createTable =
@@ -99,8 +108,7 @@ public class GUIController : MonoBehaviour
         return compEngr_createTable;
     }
 
-    //This function is used to create the elective table
-    string createElectiveTable(string tableName)
+    string CreateElectiveTable(string tableName)
     {
         string ElectiveTable_CreateTable =
            "CREATE TABLE IF NOT EXISTS " + tableName + " (" +

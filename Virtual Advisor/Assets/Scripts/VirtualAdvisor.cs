@@ -14,6 +14,7 @@ public class VirtualAdvisor : MonoBehaviour
     public InputField desiredCreditsInput;
     public GameObject takenClassesObj;
     public GameObject ElectiveClassesObj;
+
     // Virtual Advisor info
     int page = 0;
     int maxPage = 0;
@@ -63,7 +64,7 @@ public class VirtualAdvisor : MonoBehaviour
     }
 
     public void ExecuteQueryFromAdmin() {
-        dbcontroller.runQuery(adminInput.text);
+        dbcontroller.RunQuery(adminInput.text);
     }
 
     void UpdatePage(int prev) {
@@ -108,11 +109,10 @@ public class VirtualAdvisor : MonoBehaviour
         }
     }
 
-    //This function is used to udate the electives.
     public void UpdateElectives()
     {
-        string query = "DELETE FROM Electives";
-        dbcontroller.runQuery(query);
+        string query = "DELETE FROM ElectiveClasses";
+        dbcontroller.RunQuery(query);
         foreach (CheckboxController checkbox in ElectiveClassesObj.GetComponentsInChildren<CheckboxController>())
         {
             if (checkbox.GetCheck())
@@ -120,33 +120,41 @@ public class VirtualAdvisor : MonoBehaviour
                 string subject = checkbox.GetSubject();
 
                 query =
-                "INSERT INTO Electives VALUES " +
+                "INSERT INTO ElectiveClasses VALUES " +
                 "('" + subject + "')";
 
-                dbcontroller.runQuery(query);
+                dbcontroller.RunQuery(query);
             }
         }
 
     }
 
-    //This function is used to update the Taken Classes
     public void UpdateTakenClasses() {
-        string query = "DELETE FROM BigChungusTaken";
-        dbcontroller.runQuery(query);
+        string query = "DELETE FROM TakenClasses";
+        dbcontroller.RunQuery(query);
         foreach(CheckboxController checkbox in takenClassesObj.GetComponentsInChildren<CheckboxController>()) {
             if (checkbox.GetCheck()) {
                 string subject = checkbox.GetSubject();
                 int course = checkbox.GetCourse();
-                // At this point we have the subject and the course. We can now insert into the taken courses table with these two values.
 
                 query =
-                "INSERT INTO BigChungusTaken VALUES " +
+                "INSERT INTO TakenClasses VALUES " +
                 "('" + subject + "', " +
                 course + ")";
 
-                dbcontroller.runQuery(query);
+                dbcontroller.RunQuery(query);
             }
         }
+    }
+
+    public void GenerateClasses() {
+        string query = "DELETE FROM GeneratedClasses";
+        dbcontroller.RunQuery(query);
+        // Query todo: First check if we still have credits > 0 leftover.
+        // If so, check the relevant degree classes.
+        // Then pull a class from that and check if we have all the preqreqs.
+        // Then check if that class would conflict with out current schedule.
+        // If we have still passed all of these checks, add it to the GeneratedClasses table.
     }
   
 }
