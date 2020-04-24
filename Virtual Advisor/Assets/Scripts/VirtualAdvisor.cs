@@ -151,10 +151,22 @@ public class VirtualAdvisor : MonoBehaviour
         string query = "DELETE FROM GeneratedClasses";
         dbcontroller.RunQuery(query);
         // Query todo: First check if we still have credits > 0 leftover.
-        // If so, check the relevant degree classes.
+        // If so, check the relevant degree classes. (CompSciClasses)
         // Then pull a class from that and check if we have all the preqreqs.
         // Then check if that class would conflict with out current schedule.
         // If we have still passed all of these checks, add it to the GeneratedClasses table.
+        // This query is hard, maybe work it out on the whiteboard.
+
+        // Note: Maybe we should just check if it's greater than zero. Say we have 11 credits currently, we want to take 12, but all the available classes are 3 or more credits,
+        // We should just add one anyway. We'll end up with 14 credits but that's pretty much unavoidable.
+        // The only time we would have less than our desired credits is if we are literally out of classes to take.
+        string majorTable;
+        if (major == "Computer Science")
+            majorTable = "CompSciClasses";
+
+        if(desiredCredits > 0) {
+            // Do stuff
+        }
     }
   
 }
