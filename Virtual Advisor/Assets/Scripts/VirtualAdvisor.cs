@@ -32,12 +32,6 @@ public class VirtualAdvisor : MonoBehaviour
         FindMaxPage();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// This function will give our GUIController class all of this student's information, how it will be stored is to be decided.
     /// </summary>
@@ -131,7 +125,6 @@ public class VirtualAdvisor : MonoBehaviour
 
                 dbcontroller.runQuery(query);
             }
-            //need to reset table at this point
         }
 
     }
@@ -153,7 +146,6 @@ public class VirtualAdvisor : MonoBehaviour
 
                 dbcontroller.runQuery(query);
             }
-            //need to reset table at this point
         }
     }
   

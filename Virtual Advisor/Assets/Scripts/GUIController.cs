@@ -79,7 +79,9 @@ public class GUIController : MonoBehaviour
             "Course" + " INTEGER," +
             "Section" + " INTEGER," +
             "Credits" + " INTEGER," +
-            "Title" + " TEXT)";
+            "Title" + " TEXT," +
+            "PrereqSubject" + " TEXT," +
+            "PrereqCourse" + " INTEGER)";
 
         return compSci_createTable;
     }
