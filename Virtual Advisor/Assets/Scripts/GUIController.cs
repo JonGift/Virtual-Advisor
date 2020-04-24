@@ -26,12 +26,17 @@ public class GUIController : MonoBehaviour
 
         dbcmd = dbcon.CreateCommand();
 
-        string q_createTable = CreateCompSciDB2("jonCompSci");
+        string Compsci_createTable = CreateCompSciDB2("jonCompSci");
 
         string taken_createTable = createTakenTable("BigChungusTaken");
 
-        dbcmd.CommandText = q_createTable;
+        string elective_createTable = createElectiveTable("Electives");
+
+
+
+        dbcmd.CommandText = Compsci_createTable;
         dbcmd.CommandText = taken_createTable;  //create taken table
+        dbcmd.CommandText = elective_createTable;   //create elective table
 
         reader = dbcmd.ExecuteReader();
     }
@@ -53,6 +58,7 @@ public class GUIController : MonoBehaviour
         return true;
     }
 
+    //This function is used to create a table containing the already taken courses
     string createTakenTable(string tableName)
     {
         string takenTable_CreateTable =
@@ -78,20 +84,7 @@ public class GUIController : MonoBehaviour
         return compSci_createTable;
     }
 
-    string InsertIntoTable(string tableName, int crn, string subject, int course, int section, int credits, string title) {
-        string insertTable =
-            "INSERT INTO " + tableName + " VALUES " +
-            "(" + crn + ", " +
-            subject + ", " +
-            course + ", " +
-            section + ", " +
-            credits + ", " +
-            title + ")";
-
-        return insertTable;
-    }
-
-    //Create Computer Engineer DB
+    //Create Computer Engineer table
     string CreateCompEngrDB()
     {
         string compEngr_createTable =
@@ -104,6 +97,31 @@ public class GUIController : MonoBehaviour
         return compEngr_createTable;
     }
 
+    //This function is used to create the elective table
+    string createElectiveTable(string tableName)
+    {
+        string ElectiveTable_CreateTable =
+           "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
+           "Subject" + " TEXT NOT NULL)";
+
+        return ElectiveTable_CreateTable;
+
+    }
+
+
+    string InsertIntoTable(string tableName, int crn, string subject, int course, int section, int credits, string title)
+    {
+        string insertTable =
+            "INSERT INTO " + tableName + " VALUES " +
+            "(" + crn + ", " +
+            subject + ", " +
+            course + ", " +
+            section + ", " +
+            credits + ", " +
+            title + ")";
+
+        return insertTable;
+    }
     /// <summary>
     /// This function will produce a list of classes that a prospective student might want to take.
     /// </summary>

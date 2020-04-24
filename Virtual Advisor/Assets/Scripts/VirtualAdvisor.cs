@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mono.Data.Sqlite;
+using System.IO;
 
 public class VirtualAdvisor : MonoBehaviour
 {
@@ -10,8 +12,8 @@ public class VirtualAdvisor : MonoBehaviour
     public Dropdown majorDropdown;
     public Dropdown semesterDropdown;
     public InputField desiredCreditsInput;
-    public Dropdown electiveDropdown;   //Get the drop down button on page 2
     public GameObject takenClassesObj;
+    public GameObject ElectiveClassesObj;
     // Virtual Advisor info
     int page = 0;
     int maxPage = 0;
@@ -21,10 +23,7 @@ public class VirtualAdvisor : MonoBehaviour
     int desiredCredits = 12;
 
     GUIController dbcontroller;
-
-    Text myText;   //use to output users elective choices
-
-    public List<string> electives = new List<string>();   //Use to store more than one elective choice  
+  
 
     // Start is called before the first frame update
     void Start()
@@ -112,38 +111,30 @@ public class VirtualAdvisor : MonoBehaviour
         }
     }
 
-    //Update the users electives that they have selected
+    //This function is used to udate the electives.
     public void UpdateElectives()
     {
-
-        //We need to set a maximum number of electives the user can choose
-        int maxElect = 3;
-        string overallElectives = string.Empty;   //string used to store all elective choices to later print out
-
-        myText = GameObject.Find("OutputText").GetComponent<Text>();
-
-        string e1 = electiveDropdown.options[electiveDropdown.value].text;
-        electives.Add(e1);           //Add electives to the list  
-
-        overallElectives = string.Join(" ", electives);
-
-        myText.text = overallElectives;
-
-        for ( int x = 0; x < electiveDropdown.options.Count; x++)
+       string query = "DELETE FROM Electives";
+       dbcontroller.runQuery(query);
+        foreach (CheckboxController checkbox in ElectiveClassesObj.GetComponentsInChildren<CheckboxController>())
         {
-            if(electiveDropdown.options[x].text == e1)
+            if (checkbox.GetCheck())
             {
-                electiveDropdown.options.RemoveAt(x);   //If selected remove from list 
-                break;
+                string subject = checkbox.GetSubject();
+
+                query =
+                "INSERT INTO Electives VALUES " +
+                "('" + subject + "')";
+
+                //Debug.Log(query);
+                dbcontroller.runQuery(query);
             }
-        }
-        foreach (string elective in electives)
-        {
-            Debug.Log(elective);   //print out to make sure its working 
+            //need to reset table at this point
         }
 
     }
 
+    //This function is used to update the Taken Classes
     public void UpdateTakenClasses() {
         string query = "DELETE FROM BigChungusTaken";
         dbcontroller.runQuery(query);
