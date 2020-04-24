@@ -80,6 +80,9 @@ public class VirtualAdvisor : MonoBehaviour
         transform.GetChild(0).Find(pageName).gameObject.SetActive(true);
 
         // Page specific calls below:
+        if(prev == 4) {
+            UpdateElectives();
+        }
         if(prev == 5) {
             UpdateTakenClasses();
         }
@@ -114,8 +117,8 @@ public class VirtualAdvisor : MonoBehaviour
     //This function is used to udate the electives.
     public void UpdateElectives()
     {
-       string query = "DELETE FROM Electives";
-       dbcontroller.runQuery(query);
+        string query = "DELETE FROM Electives";
+        dbcontroller.runQuery(query);
         foreach (CheckboxController checkbox in ElectiveClassesObj.GetComponentsInChildren<CheckboxController>())
         {
             if (checkbox.GetCheck())
@@ -126,7 +129,6 @@ public class VirtualAdvisor : MonoBehaviour
                 "INSERT INTO Electives VALUES " +
                 "('" + subject + "')";
 
-                //Debug.Log(query);
                 dbcontroller.runQuery(query);
             }
             //need to reset table at this point

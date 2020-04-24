@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -537,7 +537,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 304564984}
+      objectReference: {fileID: 304564988}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -558,7 +558,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1768663534}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &78417406
+--- !u!114 &78417410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -567,10 +567,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 78417404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Philosophy
+  course: 0
 --- !u!1 &97240832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +1250,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2040538357}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &226744735
+--- !u!114 &226744739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1258,10 +1259,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 226744733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Dance
+  course: 0
 --- !u!1 &233202918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1484,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 57822807}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &304564984
+--- !u!114 &304564988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1491,10 +1493,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 304564982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Finance
+  course: 0
 --- !u!1001 &313451534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1993,7 +1996,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1804003143}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &438828372
+--- !u!114 &438828376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2002,10 +2005,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 438828370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Art
+  course: 0
 --- !u!1 &493830349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,7 +2058,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2084968125}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &511135015
+--- !u!114 &511135019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2063,10 +2067,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 511135013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: History
+  course: 0
 --- !u!1 &532258970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,7 +2517,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 905513561}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &575969459
+--- !u!114 &575969463
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2521,10 +2526,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 575969457}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Marketing
+  course: 0
 --- !u!1 &587420396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,7 +2918,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1432718924}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &745054241
+--- !u!114 &745054245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2921,10 +2927,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 745054239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Geology
+  course: 0
 --- !u!1 &759240601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3223,7 +3230,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1484492175}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &774567030
+--- !u!114 &774567034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3232,10 +3239,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 774567028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Anthropology
+  course: 0
 --- !u!1 &775819181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4129,7 +4137,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 575969459}
+      objectReference: {fileID: 575969463}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4323,7 +4331,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2008660575}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &983792997
+--- !u!114 &983793001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4332,10 +4340,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 983792995}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Biology
+  course: 0
 --- !u!1 &992815011
 GameObject:
   m_ObjectHideFlags: 0
@@ -4776,7 +4785,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Please select all of the classes you've taken so far.
+  m_Text: Please select topics you're interested in learning more about. These will
+    be used for your electives.
 --- !u!222 &1092211744
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5122,7 +5132,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1292824252}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1182905142
+--- !u!114 &1182905146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5131,10 +5141,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1182905140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Economics
+  course: 0
 --- !u!1 &1188327195
 GameObject:
   m_ObjectHideFlags: 0
@@ -5823,7 +5834,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1182905142}
+      objectReference: {fileID: 1182905146}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -5968,7 +5979,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1489960705}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1395707030
+--- !u!114 &1395707034
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5977,10 +5988,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1395707028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   subject: History
+  course: 0
 --- !u!1 &1395913647
 GameObject:
   m_ObjectHideFlags: 0
@@ -6645,7 +6657,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 745054241}
+      objectReference: {fileID: 745054245}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -6669,7 +6681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1435487759
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7323,7 +7335,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 774567030}
+      objectReference: {fileID: 774567034}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -7458,7 +7470,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1395707030}
+      objectReference: {fileID: 1395707034}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -8437,7 +8449,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 78417406}
+      objectReference: {fileID: 78417410}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -8582,7 +8594,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 438828372}
+      objectReference: {fileID: 438828376}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -10042,7 +10054,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 983792997}
+      objectReference: {fileID: 983793001}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -10252,7 +10264,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 226744735}
+      objectReference: {fileID: 226744739}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -10543,7 +10555,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 511135015}
+      objectReference: {fileID: 511135019}
     - target: {fileID: 4080159067306012651, guid: d609d5098409e9c449250c4c724bdd34,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 public class CheckboxController : MonoBehaviour
 {
     bool check = false;
@@ -15,7 +16,10 @@ public class CheckboxController : MonoBehaviour
     public void Start() {
         checkObj = transform.GetChild(0).gameObject;
         text = transform.GetChild(1).GetComponent<Text>();
-        text.text = subject + " " + course;
+        if (course != 0)
+            text.text = subject + " " + course;
+        else
+            text.text = subject;
     }
 
     public bool GetCheck() {
