@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Mono.Data.Sqlite;
 using System.IO;
+using System.Data;
 
 public class VirtualAdvisor : MonoBehaviour
 {
@@ -24,7 +25,6 @@ public class VirtualAdvisor : MonoBehaviour
     int desiredCredits = 12;
 
     GUIController dbcontroller;
-  
 
     // Start is called before the first frame update
     void Start()
@@ -165,6 +165,11 @@ public class VirtualAdvisor : MonoBehaviour
             majorTable = "CompSciClasses";
 
         if(desiredCredits > 0) {
+            query = "SELECT * FROM CompSciClasses";
+            // TODO: Just trying to access values from that query and seeing if they print out.
+            // Seems to work. So the next plan, just pick a random class, see if it fits, add it in! Boom big brain time
+            IDataReader reader = dbcontroller.RunQuery(query);
+            Debug.Log(reader.GetValue(1).ToString());
             // Do stuff
         }
     }

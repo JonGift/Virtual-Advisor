@@ -45,13 +45,13 @@ public class GUIController : MonoBehaviour
         }
     }
 
-    public bool RunQuery(string query) {
+    public IDataReader RunQuery(string query) {
         Debug.Log("Received query: " + query);
         dbcmd = dbcon.CreateCommand();
         dbcmd.CommandText = query;
         reader = dbcmd.ExecuteReader();
         Debug.Log("Records affected: " + reader.RecordsAffected);
-        return true;
+        return reader;
     }
 
     string CreateTakenTable(string tableName)
