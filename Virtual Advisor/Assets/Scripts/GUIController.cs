@@ -20,7 +20,9 @@ public class GUIController : MonoBehaviour
     void Start()
     {
         Debug.Log(Application.persistentDataPath);
-        connection = "URI=file:" + Application.persistentDataPath + "/" + "Virtual_Advisor_Database.db";  // Default path is: C:\Users\NAME\AppData\LocalLow\ChungusBros\Virtual Advisor
+        Debug.Log(Application.dataPath);
+        //connection = "URI=file:" + Application.persistentDataPath + "/" + "Virtual_Advisor_Database.db";  // Default path is: C:\Users\NAME\AppData\LocalLow\ChungusBros\Virtual Advisor
+        connection = "URI=file:" + Application.dataPath + "/" + "Virtual_Advisor_Database.db";
         dbcon = new SqliteConnection(connection);
         dbcon.Open();
 
