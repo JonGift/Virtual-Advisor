@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -543,6 +543,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
       objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Finance: Student Investment Fund Mgmnt'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -571,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Philosophy
-  course: 0
+  course: 103
 --- !u!1 &97240832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,7 +1268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Dance
-  course: 0
+  course: 100
 --- !u!1 &233202918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Finance
-  course: 0
+  course: 260
 --- !u!1001 &313451534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2143,7 +2148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Art
-  course: 0
+  course: 100
 --- !u!1 &493830349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,8 +2209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subject: History
-  course: 0
+  subject: Music
+  course: 100
 --- !u!1 &532258970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2664,8 +2669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f37d7db221bfc64d930f764ce805a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subject: Marketing
-  course: 0
+  subject: Sociology
+  course: 101
 --- !u!1 &587420396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,7 +3187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Geology
-  course: 0
+  course: 101
 --- !u!1 &759240601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3495,7 +3500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Anthropology
-  course: 0
+  course: 100
 --- !u!1 &775819181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4529,6 +4534,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
       objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Sociology: Introduction to Sociology'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -4730,7 +4740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Biology
-  course: 0
+  course: 102
 --- !u!1 &992815011
 GameObject:
   m_ObjectHideFlags: 0
@@ -5663,7 +5673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: Economics
-  course: 0
+  course: 201
 --- !u!1 &1188327195
 GameObject:
   m_ObjectHideFlags: 0
@@ -6358,6 +6368,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
       objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Economics: Principles of Macroeconomics'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -6642,7 +6657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subject: History
-  course: 0
+  course: 101
 --- !u!1 &1395913647
 GameObject:
   m_ObjectHideFlags: 0
@@ -7312,6 +7327,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Geology: Physical Geology'
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -8071,6 +8091,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
       objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Anthropology: Introduction to Anthropology'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -8205,6 +8230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'History: World History'
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -9449,6 +9479,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
       objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Philosophy: Introduction to Ethics'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -9610,6 +9645,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11500000, guid: 105b568a61c893d4a9610a27f7df0603,
         type: 3}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Art 100: World Art and Culture'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -11054,6 +11094,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
       objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Biology: Biology and Society'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -11263,6 +11308,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Dance: Dance in Society'
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
@@ -11554,6 +11604,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Clicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335860, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Music: Introduction to Music'
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
