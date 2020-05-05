@@ -149,6 +149,11 @@ public class VirtualAdvisor : MonoBehaviour
 
     public void GenerateClasses() {
         string query = "DELETE FROM GeneratedClasses";
+        IDataReader reader;
+        IDataReader reader2;
+        IDataReader reader3;
+        int takenCredits = 0;
+
         dbcontroller.RunQuery(query);
         // Query todo: First check if we still have credits > 0 leftover.
         // If so, check the relevant degree classes. (CompSciClasses)
@@ -164,14 +169,35 @@ public class VirtualAdvisor : MonoBehaviour
         if (major == "Computer Science")
             majorTable = "CompSciClasses";
 
-        if(desiredCredits > 0) {
-            query = "SELECT * FROM CompSciClasses";
-            // TODO: Just trying to access values from that query and seeing if they print out.
-            // Seems to work. So the next plan, just pick a random class, see if it fits, add it in! Boom big brain time
-            IDataReader reader = dbcontroller.RunQuery(query);
-            Debug.Log(reader.GetValue(1).ToString());
-            // Do stuff
+        query = "SELECT * FROM CompSciRequiredClasses EXCEPT SELECT * FROM TakenClasses";
+        reader = dbcontroller.RunQuery(query);
+
+        while (reader.Read() && (takenCredits < desiredCredits)) {
+            string subject = reader.GetValue(0).ToString();
+            int course = reader.GetInt32(1);
+
+            query = "SELECT PrereqSubject, PrereqCourse FROM CompSciClasses WHERE CompSciClasses.Subject = '" + subject + "' AND CompSciClasses.Course = " + course;
+
+            reader2 = dbcontroller.RunQuery(query);
+            while (reader2.Read()) {
+                Debug.Log("Prereqs exist");
+                string prereqSubject = reader2.GetValue(0).ToString();
+                int prereqCourse = reader2.GetInt32(1);
+                query = "SELECT * FROM TakenClasses WHERE TakenClasses.Subject = '" + prereqSubject + "' AND TakenClasses.Course = " + prereqCourse;
+                Debug.Log("About to breakdown loop");
+                reader2 = dbcontroller.RunQuery(query);
+                while (reader2.Read()) {
+                    Debug.Log("We have the prereqs.");
+                    query = "INSERT INTO GeneratedClasses SELECT * FROM CompSciClasses WHERE CompSciClasses.Subject = '" + subject + "' AND CompSciClasses.Course = " + course;
+                    dbcontroller.RunQuery(query);
+                    query = "SELECT Credits FROM CompSciClasses WHERE CompSciClasses.Subject = '" + subject + "' AND CompSciClasses.Course = " + course;
+                    reader3 = dbcontroller.RunQuery(query);
+                    while (reader3.Read())
+                        takenCredits += reader3.GetInt32(0);
+                }
+            }
         }
+        // Do stuff
     }
   
 }

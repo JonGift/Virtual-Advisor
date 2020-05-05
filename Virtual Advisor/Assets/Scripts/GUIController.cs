@@ -32,6 +32,7 @@ public class GUIController : MonoBehaviour
         RunQuery(CreateTakenTable("TakenClasses"));
         RunQuery(CreateElectiveTable("ElectiveClasses"));
         RunQuery(CreateGeneratedClassTable("GeneratedClasses"));
+        RunQuery(CreateCompSciRequiredClassTable("CompSciRequiredClasses"));
     }
 
     void OnApplicationQuit() {
@@ -117,6 +118,13 @@ public class GUIController : MonoBehaviour
             "Subject" + " TEXT NOT NULL," +
             "Course" + " INTEGER)";
         return ElectiveTable_CreateTable;
+    }
+
+    string CreateCompSciRequiredClassTable(string tableName) {
+        string create = "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
+            "Subject" + " TEXT NOT NULL," +
+            "Course" + " INTEGER)";
+        return create;
     }
 
 
