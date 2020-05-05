@@ -196,6 +196,8 @@ public class VirtualAdvisor : MonoBehaviour
                         takenCredits += reader3.GetInt32(0);
                 }
             }
+
+            query = "SELECT PrereqSubject, PrereqCourse FROM MathClasses WHERE MathClasses.Subject = '" + subject + "' AND MathClasses.Course = " + course;
         }
         // Do stuff
     }
