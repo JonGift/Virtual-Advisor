@@ -155,6 +155,8 @@ public class VirtualAdvisor : MonoBehaviour
         IDataReader reader3;
         IDataReader reader4;
         IDataReader reader5;
+        IDataReader reader6;
+        IDataReader reader7;
         int takenCredits = 0;
 
         dbcontroller.RunQuery(query);
@@ -168,6 +170,13 @@ public class VirtualAdvisor : MonoBehaviour
         // Note: Maybe we should just check if it's greater than zero. Say we have 11 credits currently, we want to take 12, but all the available classes are 3 or more credits,
         // We should just add one anyway. We'll end up with 14 credits but that's pretty much unavoidable.
         // The only time we would have less than our desired credits is if we are literally out of classes to take.
+
+
+
+        //**************************** Hunter Note: I notice we dont get any classes out when we say we havent taken anything yet. ****************/
+        //what do we do if there is not a pre req
+        //Maybe if its somebody brand new let them choose electives but then everything else is predetermined?
+
         string majorTable;
         if (major == "Computer Science")
             majorTable = "CompSciClasses";
@@ -223,6 +232,20 @@ public class VirtualAdvisor : MonoBehaviour
                         takenCredits += reader5.GetInt32(0);
                 }
             }
+
+            //This should insert the electives into the schedule i believe
+            //This should insert into the generated classes everything about the electives that the user chose
+            /*
+            query = "INSERT INTO GeneratedClasses SELECT * FROM ElectiveOptions INNER JOIN ElectiveClasses on ElectiveClasses.Subject = ElectiveOptions.Subject";
+            reader6 = dbcontroller.RunQuery(query);
+            while(reader6.Read())
+            {
+                query = "SELECT Credits FROM ElectiveOptions WHERE ElectiveOptions.Subject = '" + subject + "' AND ElectiveOptions.Course = " + course;
+                reader7 = dbcontroller.RunQuery(query);
+                while (reader7.Read())
+                    takenCredits += reader7.GetInt32(0);
+            }
+            */
         }
         // Do stuff
     }
