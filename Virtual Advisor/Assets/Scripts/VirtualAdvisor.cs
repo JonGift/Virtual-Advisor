@@ -111,7 +111,7 @@ public class VirtualAdvisor : MonoBehaviour
 
     public void UpdateElectives()
     {
-        string query = "DELETE FROM UserChosenElectives";
+        string query = "DELETE FROM ElectiveClasses";
         dbcontroller.RunQuery(query);
         foreach (CheckboxController checkbox in ElectiveClassesObj.GetComponentsInChildren<CheckboxController>())
         {
@@ -121,7 +121,7 @@ public class VirtualAdvisor : MonoBehaviour
                 int course = checkbox.GetCourse();
 
                 query =
-                "INSERT INTO UserChosenElectives VALUES " +
+                "INSERT INTO ElectiveClasses VALUES " +
                 "('" + subject + "', " +
                 course + ")";
                 dbcontroller.RunQuery(query);
@@ -133,7 +133,17 @@ public class VirtualAdvisor : MonoBehaviour
     public void UpdateTakenClasses() {
         string query = "DELETE FROM TakenClasses";
         dbcontroller.RunQuery(query);
-        foreach(CheckboxController checkbox in takenClassesObj.GetComponentsInChildren<CheckboxController>()) {
+
+        query = "INSERT INTO TakenClasses VALUES ('CS', 0)";
+        dbcontroller.RunQuery(query);
+
+        query = "INSERT INTO TakenClasses VALUES ('MATH', 0)";
+        dbcontroller.RunQuery(query);
+
+        query = "INSERT INTO TakenClasses VALUES ('ENGL', 0)";
+        dbcontroller.RunQuery(query);
+
+        foreach (CheckboxController checkbox in takenClassesObj.GetComponentsInChildren<CheckboxController>()) {
             if (checkbox.GetCheck()) {
                 string subject = checkbox.GetSubject();
                 int course = checkbox.GetCourse();
@@ -186,6 +196,7 @@ public class VirtualAdvisor : MonoBehaviour
 
         while (reader.Read() && (takenCredits < desiredCredits)) {
             string subject = reader.GetValue(0).ToString();
+            Debug.Log(subject);
             int course = reader.GetInt32(1);
 
             query = "SELECT PrereqSubject, PrereqCourse FROM CompSciClasses WHERE CompSciClasses.Subject = '" + subject + "' AND CompSciClasses.Course = " + course;
@@ -232,22 +243,31 @@ public class VirtualAdvisor : MonoBehaviour
                         takenCredits += reader5.GetInt32(0);
                 }
             }
-
-            //This should insert the electives into the schedule i believe
-            //This should insert into the generated classes everything about the electives that the user chose
-            
-            query = "INSERT INTO GeneratedClasses SELECT * FROM ElectiveOptions INNER JOIN ElectiveClasses on ElectiveClasses.Subject = ElectiveOptions.Subject";
-            reader6 = dbcontroller.RunQuery(query);
-            while(reader6.Read())
-            {
-                query = "SELECT Credits FROM ElectiveOptions WHERE ElectiveOptions.Subject = '" + subject + "' AND ElectiveOptions.Course = " + course;
-                reader7 = dbcontroller.RunQuery(query);
-                while (reader7.Read())
-                    takenCredits += reader7.GetInt32(0);
-            }
-            
         }
         // Do stuff
+
+        //query = "SELECT * FROM CompSciRequiredClasses EXCEPT SELECT * FROM TakenClasses";
+        //query = "SELECT * FROM ElectiveOptions, ElectiveClasses WHERE ElectiveClasses.Subject = ElectiveOptions.Subject";
+        //reader = dbcontroller.RunQuery(query);
+        query = "SELECT * FROM ElectiveOptions, ElectiveClasses WHERE ElectiveClasses.Subject = ElectiveOptions.Subject";
+        //query = "SELECT * FROM ElectiveOptions INNER JOIN ElectiveClasses USING(Subject) ON ElectiveClasses.Subject = ElectiveOptions.Subject";
+        reader = dbcontroller.RunQuery(query);
+        while (reader.Read() && (takenCredits < desiredCredits)) {
+            int crn = reader.GetInt32(0);
+            string subject = reader.GetValue(1).ToString();
+            int course = reader.GetInt32(2);
+            //This should insert the electives into the schedule i believe
+            //This should insert into the generated classes everything about the electives that the user chose
+
+
+            //Debug.Log(reader6.GetInt32(0));
+            query = "INSERT OR IGNORE INTO GeneratedClasses SELECT ElectiveOptions.* FROM ElectiveOptions WHERE ElectiveOptions.CRN = " + crn;
+            reader2 = dbcontroller.RunQuery(query);
+            query = "SELECT Credits FROM ElectiveOptions WHERE ElectiveOptions.Subject = '" + subject + "' AND ElectiveOptions.Course = " + course;
+            reader2 = dbcontroller.RunQuery(query);
+            while (reader2.Read())
+                takenCredits += reader2.GetInt32(0);
+    }
     }
   
 }

@@ -31,6 +31,7 @@ public class GUIController : MonoBehaviour
         RunQuery(CreateCompSciDB2("CompSciClasses"));
         RunQuery(CreateTakenTable("TakenClasses"));
         RunQuery(CreateElectiveOptionsTable("ElectiveOptions"));
+        RunQuery(CreateElectiveClassesTable("ElectiveClasses"));
         RunQuery(CreateElectiveTable("UserChosenElectives"));
         RunQuery(CreateMathTable("MathClasses"));
         RunQuery(CreateGeneratedClassTable("GeneratedClasses"));
@@ -140,6 +141,13 @@ public class GUIController : MonoBehaviour
          "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
             "Subject" + " TEXT NOT NULL)";
         return ElectiveTable_CreateTable;
+    }
+
+    string CreateElectiveClassesTable(string tableName) {
+        string create = "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
+            "Subject" + " TEXT NOT NULL," +
+            "Course" + " INTEGER)";
+        return create;
     }
 
     //Should contain all the required CS classes and the electives
