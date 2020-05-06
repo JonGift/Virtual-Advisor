@@ -138,8 +138,7 @@ public class GUIController : MonoBehaviour
     {
         string ElectiveTable_CreateTable =
          "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
-            "Subject" + " TEXT NOT NULL," +
-            "Course" + " INTEGER)";
+            "Subject" + " TEXT NOT NULL)";
         return ElectiveTable_CreateTable;
     }
 

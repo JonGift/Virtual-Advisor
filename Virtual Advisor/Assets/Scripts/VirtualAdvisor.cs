@@ -235,7 +235,7 @@ public class VirtualAdvisor : MonoBehaviour
 
             //This should insert the electives into the schedule i believe
             //This should insert into the generated classes everything about the electives that the user chose
-            /*
+            
             query = "INSERT INTO GeneratedClasses SELECT * FROM ElectiveOptions INNER JOIN ElectiveClasses on ElectiveClasses.Subject = ElectiveOptions.Subject";
             reader6 = dbcontroller.RunQuery(query);
             while(reader6.Read())
@@ -245,7 +245,7 @@ public class VirtualAdvisor : MonoBehaviour
                 while (reader7.Read())
                     takenCredits += reader7.GetInt32(0);
             }
-            */
+            
         }
         // Do stuff
     }
