@@ -111,18 +111,19 @@ public class VirtualAdvisor : MonoBehaviour
 
     public void UpdateElectives()
     {
-        string query = "DELETE FROM ElectiveClasses";
+        string query = "DELETE FROM UserChosenElectives";
         dbcontroller.RunQuery(query);
         foreach (CheckboxController checkbox in ElectiveClassesObj.GetComponentsInChildren<CheckboxController>())
         {
             if (checkbox.GetCheck())
             {
                 string subject = checkbox.GetSubject();
+                int course = checkbox.GetCourse();
 
                 query =
-                "INSERT INTO ElectiveClasses VALUES " +
-                "('" + subject + "')";
-
+                "INSERT INTO UserChosenElectives VALUES " +
+                "('" + subject + "', " +
+                course + ")";
                 dbcontroller.RunQuery(query);
             }
         }
@@ -152,6 +153,8 @@ public class VirtualAdvisor : MonoBehaviour
         IDataReader reader;
         IDataReader reader2;
         IDataReader reader3;
+        IDataReader reader4;
+        IDataReader reader5;
         int takenCredits = 0;
 
         dbcontroller.RunQuery(query);
@@ -180,7 +183,7 @@ public class VirtualAdvisor : MonoBehaviour
 
             reader2 = dbcontroller.RunQuery(query);
             while (reader2.Read()) {
-                Debug.Log("Prereqs exist");
+                Debug.Log("CompSci Prereqs exist");
                 string prereqSubject = reader2.GetValue(0).ToString();
                 int prereqCourse = reader2.GetInt32(1);
                 query = "SELECT * FROM TakenClasses WHERE TakenClasses.Subject = '" + prereqSubject + "' AND TakenClasses.Course = " + prereqCourse;
@@ -197,7 +200,29 @@ public class VirtualAdvisor : MonoBehaviour
                 }
             }
 
-            query = "SELECT PrereqSubject, PrereqCourse FROM MathClasses WHERE MathClasses.Subject = '" + subject + "' AND MathClasses.Course = " + course;
+            //we are assuming they are starting at Calc 1 which we will say has "no prereq"
+            //Also assuming STATS is a part of math classes as DR. LEE says EZ INTEGRAAAAALLLL
+            query = "SELECT PrereqSubject, PrereqCourse FROM MathClasses WHERE MathClasses.Subject = '" + subject + "' AND MathClasses.Course = " + course; //this was here before Hunter tried working on Math stuff
+            reader4 = dbcontroller.RunQuery(query);
+            while (reader4.Read())
+            {
+                Debug.Log("Math Prereqs exist");
+                string prereqSubject = reader4.GetValue(0).ToString();
+                int prereqCourse = reader4.GetInt32(1);
+                query = "SELECT * FROM TakenClasses WHERE TakenClasses.Subject = '" + prereqSubject + "' AND TakenClasses.Course = " + prereqCourse;
+                Debug.Log("About to breakdown loop");
+                reader4 = dbcontroller.RunQuery(query);
+                while (reader4.Read())
+                {
+                    Debug.Log("We have the prereqs.");
+                    query = "INSERT INTO GeneratedClasses SELECT * FROM MathClasses WHERE MathClasses.Subject = '" + subject + "' AND MathClasses.Course = " + course;
+                    dbcontroller.RunQuery(query);
+                    query = "SELECT Credits FROM MathClasses WHERE MathClasses.Subject = '" + subject + "' AND MathClasses.Course = " + course;
+                    reader5 = dbcontroller.RunQuery(query);
+                    while (reader5.Read())
+                        takenCredits += reader5.GetInt32(0);
+                }
+            }
         }
         // Do stuff
     }

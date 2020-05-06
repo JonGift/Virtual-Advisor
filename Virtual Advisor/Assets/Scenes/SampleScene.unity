@@ -9650,6 +9650,11 @@ PrefabInstance:
       propertyPath: m_Text
       value: 'Art 100: World Art and Culture'
       objectReference: {fileID: 0}
+    - target: {fileID: 4080159066090335862, guid: d609d5098409e9c449250c4c724bdd34,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4080159067306012652, guid: d609d5098409e9c449250c4c724bdd34, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d609d5098409e9c449250c4c724bdd34, type: 3}

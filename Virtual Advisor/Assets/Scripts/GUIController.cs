@@ -30,7 +30,9 @@ public class GUIController : MonoBehaviour
 
         RunQuery(CreateCompSciDB2("CompSciClasses"));
         RunQuery(CreateTakenTable("TakenClasses"));
-        RunQuery(CreateElectiveTable("ElectiveClasses"));
+        RunQuery(CreateElectiveOptionsTable("ElectiveOptions"));
+        RunQuery(CreateElectiveTable("UserChosenElectives"));
+        RunQuery(CreateMathTable("MathClasses"));
         RunQuery(CreateGeneratedClassTable("GeneratedClasses"));
         RunQuery(CreateCompSciRequiredClassTable("CompSciRequiredClasses"));
     }
@@ -56,7 +58,7 @@ public class GUIController : MonoBehaviour
         Debug.Log("Records affected: " + reader.RecordsAffected);
         return reader;
     }
-
+    //These are the casses the user has taken
     string CreateTakenTable(string tableName)
     {
         string takenTable_CreateTable =
@@ -67,7 +69,7 @@ public class GUIController : MonoBehaviour
         return takenTable_CreateTable;
 
     }
-
+    //this is the final generated classes
     string CreateGeneratedClassTable(string tableName) {
         string GeneratedClassCreateTable =
             "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
@@ -99,18 +101,39 @@ public class GUIController : MonoBehaviour
         return compSci_createTable;
     }
 
-    string CreateCompEngrDB()
+    string CreateMathTable(string tableName)
     {
-        string compEngr_createTable =
-            "CREATE TABLE IF NOT EXISTS " + "compSci_table" + " (" +
-            "CRN" + "INTERGER PRIMARY KEY," +
-            "Semester" + "TEXT NOT NULL, " +
-            "Prerequisites" + "TEXT NOT NULL, " +
-            "Campus" + "TEXT NOT NULL )";
+        string math_createTable =
+            "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
+            "CRN" + " INTEGER PRIMARY KEY," +
+            "Subject" + " TEXT NOT NULL," +
+            "Course" + " INTEGER," +
+            "Section" + " INTEGER," +
+            "Credits" + " INTEGER," +
+            "Title" + " TEXT," +
+            "PrereqSubject" + " TEXT," +
+            "PrereqCourse" + " INTEGER)";
 
-        return compEngr_createTable;
+        return math_createTable;
+    }
+    //These are the electives available for the user to take
+    string CreateElectiveOptionsTable(string tableName)
+    {
+        string electOpt_createTable =
+            "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
+            "CRN" + " INTEGER PRIMARY KEY," +
+            "Subject" + " TEXT NOT NULL," +
+            "Course" + " INTEGER," +
+            "Section" + " INTEGER," +
+            "Credits" + " INTEGER," +
+            "Title" + " TEXT," +
+            "PrereqSubject" + " TEXT," +
+            "PrereqCourse" + " INTEGER)";
+
+        return electOpt_createTable;
     }
 
+    //These are the electives the user showed interest in
     string CreateElectiveTable(string tableName)
     {
         string ElectiveTable_CreateTable =
@@ -120,6 +143,7 @@ public class GUIController : MonoBehaviour
         return ElectiveTable_CreateTable;
     }
 
+    //Should contain all the required CS classes and the electives
     string CreateCompSciRequiredClassTable(string tableName) {
         string create = "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
             "Subject" + " TEXT NOT NULL," +
@@ -127,7 +151,7 @@ public class GUIController : MonoBehaviour
         return create;
     }
 
-
+    //Used for the admin page
     string InsertIntoTable(string tableName, int crn, string subject, int course, int section, int credits, string title)
     {
         string insertTable =
@@ -141,6 +165,20 @@ public class GUIController : MonoBehaviour
 
         return insertTable;
     }
+
+
+    /*string CreateCompEngrDB()
+{
+    string compEngr_createTable =
+        "CREATE TABLE IF NOT EXISTS " + "compSci_table" + " (" +
+        "CRN" + "INTERGER PRIMARY KEY," +
+        "Semester" + "TEXT NOT NULL, " +
+        "Prerequisites" + "TEXT NOT NULL, " +
+        "Campus" + "TEXT NOT NULL )";
+
+    return compEngr_createTable;
+}
+*/
     /// <summary>
     /// This function will produce a list of classes that a prospective student might want to take.
     /// </summary>
