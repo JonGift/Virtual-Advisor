@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class CheckboxController : MonoBehaviour
 {
     bool check = false;
+    public string visibleSubject = "Computer Science";
     public string subject = "CS";
     public int course = 120;
 
@@ -17,13 +18,17 @@ public class CheckboxController : MonoBehaviour
         checkObj = transform.GetChild(0).gameObject;
         text = transform.GetChild(1).GetComponent<Text>();
         if (course != 0)
-            text.text = subject + " " + course;
+            text.text = visibleSubject + " " + course;
         else
-            text.text = subject;
+            text.text = visibleSubject;
     }
 
     public bool GetCheck() {
         return check;
+    }
+
+    public string GetVisibleSubject() {
+        return visibleSubject;
     }
 
     public string GetSubject() {

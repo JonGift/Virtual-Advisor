@@ -15,6 +15,7 @@ public class VirtualAdvisor : MonoBehaviour
     public InputField desiredCreditsInput;
     public GameObject takenClassesObj;
     public GameObject ElectiveClassesObj;
+    public Text GeneratedClassesText;
 
     // Virtual Advisor info
     int page = 0;
@@ -80,6 +81,10 @@ public class VirtualAdvisor : MonoBehaviour
         }
         if(prev == 5) {
             UpdateTakenClasses();
+        }
+
+        if(page == 6) {
+            GenerateClasses();
         }
     }
 
@@ -267,7 +272,19 @@ public class VirtualAdvisor : MonoBehaviour
             reader2 = dbcontroller.RunQuery(query);
             while (reader2.Read())
                 takenCredits += reader2.GetInt32(0);
-    }
+        }
+
+        query = "SELECT * FROM GeneratedClasses";
+        reader = dbcontroller.RunQuery(query);
+        GeneratedClassesText.text = "";
+        while (reader.Read()) {
+            int crn = reader.GetInt32(0);
+            string subject = reader.GetValue(1).ToString();
+            int course = reader.GetInt32(2);
+            int credits = reader.GetInt32(4);
+            string title = reader.GetValue(5).ToString();
+            GeneratedClassesText.text += title + ": " + subject + " " + course + ": " + credits + " credits. CRN: " + crn + "\n";
+        }
     }
   
 }
